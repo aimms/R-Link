@@ -24,6 +24,7 @@ Aimms4r::GetData accepts as argument a scalar string representing the fully qual
 
 # Data Frame Form
 Consider the 4-dimensional Identifier MultiDim(i,j,k,l), with i an index to the set I, j an index to the set J, k an index to the set K and l and index to set L subsequently.
+
     Set setI {
         Index: i;
         InitialData: {
@@ -51,7 +52,7 @@ Consider the 4-dimensional Identifier MultiDim(i,j,k,l), with i an index to the 
     Parameter MultiDim {
         IndexDomain: (i,j,k,l);
     }
-
+    
 After calling aimms4r::GetData(“MultiDim”), AIMMS will return an R data frame holding the data of the identifier MultiDim. The data frame will contain 5 columns where the first 4 columns will have the name of the set of the indices (columns setI,setJ,setK,setL). The last column of the data frame will have the same name as the AIMMS Identifier itself (column MultiDim). In the R context (during the execution of the R string code passed to R::executeScript), the data frame will be available and its column-specific data will be available by using the standard R data frame element access expressions. 
 Consider the following R code:
 multiDim<-aimms4r::GetData(“MultiDim”);
