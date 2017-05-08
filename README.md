@@ -124,11 +124,11 @@ The second statement executes the R code which:
 
 
 # AIMMS4R package documentation
-GetData
-Usage
+**GetData**
+**Usage**
 GetData(identifierName)
-Arguments
-identifierName  
+**Arguments**
+***identifierName***
 An R Character variable with the name of the AIMMS identifier from which we want to retrieve data
 Value
 If the identifier is a multidimensional identifier, the function will return a data frame containing the identifier’s data. Depending on the identifier’s dimensions, the data frame will first contain columns representing the set elements over which the identifier has a non-zero value (row-based tuples) and an additional column representing the actual data. The columns representing the set elements can either have a string or integer data type depending on how their sets are declared in AIMMS. The value column can have either integer, double or string data type. In case the identifier is scalar, the function will return a scalar R object with the same data type as the scalar identifier’s storage data type. Thus, the returned R object could be of integer, double, element or string data type. 
