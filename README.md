@@ -142,7 +142,9 @@ The function will raise an error when:
 •	an unknown identifier name has been provided as argument
 •	the R data frame does not have the same number of columns plus one as the AIMMS identifier
 •	the R object represents an AIMMS set element and that element is not contained in the range of the identifier 
-Examples
+
+# Examples
+```
 ##Consider the following AIMMS declarations:
 “Set Cities {
         Index: c;
@@ -157,11 +159,11 @@ Examples
         InitialData: ‘Utrecht’;
     }
 “
+```
+```
 population<-data.frame(c(‘Amsterdam’,’Haarlem’),c(779,150 ))
-## Set multidimensional identifier data
-SetData(population,’PopulationsInK’)
-## Set scalar set element
-SetData(‘Amsterdam’,’CurrentCity’)
-
-
-
+##Set multidimensional identifier data
+SetData(population,’PopulationsInK’);
+##Set scalar set element
+SetData(‘Amsterdam’,’CurrentCity’);
+```
