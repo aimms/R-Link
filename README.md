@@ -128,8 +128,10 @@ In case an unknown identifier’s name has been provided as argument, the functi
 See Also
 aimms4r::SetData
 Examples
+```
 ##Assuming there is an AIMMS identifier with name “Populations” in the model
 data<-aimms4r::GetData(“Populations”)
+```
 
 SetData
 Usage
@@ -146,7 +148,7 @@ The function will raise an error when:
 # Examples
 ```
 ##Consider the following AIMMS declarations:
-“Set Cities {
+Set Cities {
         Index: c;
         InitialData: data{'Amsterdam','Haarlem','Utrecht'};
     }
@@ -158,9 +160,7 @@ The function will raise an error when:
         Range: Cities;
         InitialData: ‘Utrecht’;
     }
-“
-```
-```
+###Consider the following R code:
 population<-data.frame(c(‘Amsterdam’,’Haarlem’),c(779,150 ))
 ##Set multidimensional identifier data
 SetData(population,’PopulationsInK’);
