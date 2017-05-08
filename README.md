@@ -11,7 +11,7 @@ Contains
 The R4AIMMS system library **requires** that the *R programming language* is already installed on the target machine along with the **Rcpp R package**. The Rcpp package requires R’s version to be *3.0.0 or higher* and can be installed from within R by typing ```install.packages(“Rcpp”)```.
 
 # R::executeScript Procedure
-The library exposes the **executeScript** procedure through the R prefix. The procedure takes a scalar string as argument, representing the R script to be executed through AIMMS. The R script can contain any arbitrary R code, such as function calls, R object declarations, library installation/import statements and so on. In case of an R error, AIMMS will notify the user by raising this error. During R code execution through R::executeScript there is no visible output from the R output, thus the result to a call to R’s print function won’t be visible to the AIMMS user.
+The library exposes the **executeScript** procedure through the **R prefix**. The procedure takes a scalar string as argument, representing the R script to be executed through AIMMS. The R script can contain any arbitrary R code, such as function calls, R object declarations, library installation/import statements and so on. In case of an R error, AIMMS will notify the user by raising this error. __During R code execution through *R::executeScript* there is no visible output from the R output, thus the result to a call to R’s print function won’t be visible to the AIMMS user__.
 
 
 
