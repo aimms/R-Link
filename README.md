@@ -60,16 +60,19 @@ After calling *aimms4r::GetData(“MultiDim”)*, AIMMS will return an *R data f
 Consider the following R code:
 ```
 multiDim<-aimms4r::GetData(“MultiDim”);
+
 /*Access the first column (setI) by index value*/
 iColumn<-multiDim[1]
+
 /*Access the second column (setJ) by column name*/
 jColumn<-multiDim[‘setJ’]
+
 /*Access the data column through the dollar sign notation*/
 valueColumn<-multiDim$multiDim
 ```
 
 # Aimms Storage Types and R Data Frame Column Data Types
-*Aimms storage types* such as **integer**, **double**, **set element** and **string** are maintained after retrieving AIMMS data through a call to *GetData*. Sets that are *subsets of the Integers set* will be retrieved as *integer Columns*. Normal sets will be retrieved as string Columns. Similarly, *the values of element parameters* will be retrieved *depending on their range storage type*.
+*Aimms storage types* such as **integer**, **double**, **set element** and **string** are maintained after retrieving AIMMS data through a call to *GetData*. Sets that are *subsets of the Integers set* will be retrieved as *__integer Columns__*. Normal sets will be retrieved as string Columns. Similarly, *the values of element parameters* will be retrieved *depending on their range storage type*.
 
 # Aimms4r::SetData
 Aimms4r::SetData(r object, scalar string: fully qualified identifier name)
