@@ -16,7 +16,7 @@ The library exposes the **executeScript** procedure through the **R prefix**. Th
 
 
 # Data passing between AIMMS and the R runtime environment
-We provide aimms4r, an R library that facilitates data passing between AIMMS and the R runtime. Aimms4r contains two R functions, the aimms4r::GetData and the aimms4r::SetData. 
+We provide **aimms4r**, *an R library that facilitates data passing between AIMMS and the R runtime*. Aimms4r contains two R functions, the **aimms4r::GetData** and the **aimms4r::SetData**. 
 
 # Aimms4r::GetData
 **Aimms4r::GetData(scalar string: fully qualified identifier name)**
