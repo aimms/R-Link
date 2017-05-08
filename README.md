@@ -153,6 +153,9 @@ In case an unknown identifier’s name has been provided as argument, the functi
 data<-aimms4r::GetData(“Populations”)
 ```
 
+
+
+
 # SetData
 
 # Usage
@@ -169,9 +172,9 @@ identifierName The AIMMS identifier in which we want to store the underlying dat
 # Details
 
 The function will raise an error when:
-•	an unknown identifier name has been provided as argument
-•	the R data frame does not have the same number of columns plus one as the AIMMS identifier
-•	the R object represents an AIMMS set element and that element is not contained in the range of the identifier 
+* an unknown identifier name has been provided as argument
+* the R data frame does not have the same number of columns plus one as the AIMMS identifier
+* the R object represents an AIMMS set element and that element is not contained in the range of the identifier 
 
 # Examples
 ```
