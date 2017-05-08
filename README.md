@@ -1,5 +1,24 @@
 # R-Link
-Contains 
+This repository contains the sourcecode for **aimms4r c++ R package** & **r4aimms c++ project**. These two projects constitute the **R-link project**, a way to allow AIMMS to *execute user specified R code* and *pass data between AIMMS and the R runtime environment*, **extending** AIMMS optimizations & sparse execution capabilities with R's rich library ecosystem.    
+
+# Table Of Contents
+* [The R programming language](#the-r-programming-language)
+* [R4AIMMS](#r4aimms)
+* [Requirements](#requirements)
+* [R::executeScript Procedure](#rexecutescript-procedure)
+* [Data passing between AIMMS and the R runtime environment](#data-passing-between-aimms-and-the-r-runtime-environment)
+    * [Aimms4r::GetData](#aimms4rgetdata)
+        * [Data Frame Form](#data-frame-form)
+        * [Aimms Storage Types and R Data Frame Column Data Types](#aimms-storage-types-and-r-data-frame-column-data-types)
+    * [Aimms4r::SetData](#aimms4rsetdata)
+        * [Storage Type Conversions when assigning R data to AIMMS (functionality partially there)](#storage-type-conversions-when-assigning-r-data-to-aimms-functionality-partially-there)
+* [R Object Lifetime](#r-object-lifetime)
+* [AIMMS to R data passing and vice versa example](#aimms-to-r-data-passing-and-vice-versa-example)
+* [AIMMS4R package documentation](#aimms4r-package-documentation)
+    * [GetData](#getdata)
+    * [SetData](#setdata)
+    * [Examples](#examples-1)
+
 
 # The R programming language
 *[R](https://www.r-project.org/)* is an open source programming language and software environment for statistical computing that is broadly used among statisticians, econometrists and data miners. R implements a wide variety of statistical techniques such as linear and nonlinear modeling, time-series analysis, classification and clustering. 
