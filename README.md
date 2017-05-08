@@ -103,13 +103,13 @@ In line 1, we retrieve the data of the __AIMMS identifier “Populations”__ an
 
 
 # AIMMS to R data passing and vice versa example
-In this example, we will show how to use the R4AIMMS system library, how to execute R code through AIMMS and how to pass data along AIMMS to R and vice versa.
+In this example, we will show *how to use the R4AIMMS system library*, *how to execute R code through AIMMS* and *how to pass data along AIMMS to R and vice versa*.
 
-1.	Open AIMMS and create a new project named “RAimmsTest”.
-2.	Add the system library “R4AIMMS” to the model.
-3.	Create the Set “Amount” and specify its elements.
-4.	Create the one-dimensional Identifier “Cosines(i)”.
-5.	Create the procedure “fillCosines” and place the following two statements in its body attribute:
+1.	*Open AIMMS* and create a __new project named “RAimmsTest”__.
+2.	Add the __system library “R4AIMMS”__ to the model.
+3.	Create the __Set “Amount”__ and specify its elements.
+4.	Create the __one-dimensional Identifier “Cosines(i)”__.
+5.	Create the __procedure “fillCosines”__ and place the following two statements in its body attribute:
 ```
 Cosines(i) := ord(i);
 R::executeScript("data<-aimms4r::GetData('Cosines');"+
