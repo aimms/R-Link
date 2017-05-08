@@ -81,10 +81,12 @@ valueColumn<-multiDim$multiDim
 
 # Storage Type Conversions when assigning R data to AIMMS (functionality partially there)
 The following conversion table holds when data is assigned to an identifier by using the aimms4r::SetData function. When we want to assign element data to an element identifier from R, the element value should be within range, for the assignment to be successful. Otherwise, it will fail and AIMMS will issue an error.
-FROM/TO	Element	Integer	Double	String
-Integer	OK if range=integer	OK	OK	FAIL
-Double	OK if range=string	FAIL	OK	FAIL
-String	OK if range =string	FAIL	FAIL	OK
+
+FROM/TO|Element|Integer|Double|String
+-------|---------------|------|-------
+Integer|OK if range=integer|OK|OK|FAIL
+Double|OK if range=string|FAIL|OK|FAIL
+String|OK if range=string|FAIL|FAIL|OK
 
  
 # R Object Lifetime
