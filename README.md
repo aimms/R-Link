@@ -75,8 +75,9 @@ valueColumn<-multiDim$multiDim
 *Aimms storage types* such as **integer**, **double**, **set element** and **string** are maintained after retrieving AIMMS data through a call to *GetData*. Sets that are *subsets of the Integers set* will be retrieved as *__integer Columns__*. Normal sets will be retrieved as *__string Columns__*. Similarly, *the values of element parameters* will be retrieved **depending on their range storage type**.
 
 # Aimms4r::SetData
-Aimms4r::SetData(r object, scalar string: fully qualified identifier name)
-Aimms4r::SetData accepts two arguments, the first one is an R data frame or an R scalar value and the second one is a scalar string that represents the fully qualified name of an existing AIMMS identifier to which we want to assign the data of the first argument. In case of a mismatch between the argument data frame’s columns and the assigned identifier’s dimensions, an error will be raised and reported by AIMMS. Additionally, the function does not add new elements to the sets, in case it encounters a column element that does not exist in the corresponding set. In that case, an error will be raised by AIMMS, informing the user about that unknown element.
+**Aimms4r::SetData(r object, scalar string: fully qualified identifier name)**
+
+**Aimms4r::SetData** accepts two arguments, the first one is an *R data frame* or an *R scalar value* and the second one is a *scalar string* that represents the fully qualified name of an existing AIMMS identifier to which we want to assign the data of the first argument. In case of a mismatch between the argument data frame’s columns and the assigned identifier’s dimensions, an error will be raised and reported by AIMMS. Additionally, **the function does not add new elements to the sets, in case it encounters a column element that does not exist in the corresponding set**. In that case, an error will be raised by AIMMS, informing the user about that unknown element.
 
 # Storage Type Conversions when assigning R data to AIMMS (functionality partially there)
 The following conversion table holds when data is assigned to an identifier by using the aimms4r::SetData function. When we want to assign element data to an element identifier from R, the element value should be within range, for the assignment to be successful. Otherwise, it will fail and AIMMS will issue an error.
