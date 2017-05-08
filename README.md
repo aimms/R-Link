@@ -120,7 +120,7 @@ The first statement initializes the content of the *Cosines identifier* with the
 The second statement executes the R code which:
 1.	Retrieves __a data frame named ‘data’__ containing *Cosines’s data by calling aimms4r::GetData*
 2.	It accesses the *second column of the Data Frame* (the column that holds the actual data), applies the cosine function to each element of the column and assigns back the new data frame back to the data object
-3.	It writes the data back to the AIMMS “Cosines” identifier by calling *aimms4r::SetData*.
+3.	It writes the data back to the __AIMMS “Cosines” identifier__ by calling *aimms4r::SetData*.
 
 
 # AIMMS4R package documentation
