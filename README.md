@@ -55,7 +55,7 @@ Consider the 4-dimensional Identifier MultiDim(i,j,k,l), with i an index to the 
     
 After calling aimms4r::GetData(“MultiDim”), AIMMS will return an R data frame holding the data of the identifier MultiDim. The data frame will contain 5 columns where the first 4 columns will have the name of the set of the indices (columns setI,setJ,setK,setL). The last column of the data frame will have the same name as the AIMMS Identifier itself (column MultiDim). In the R context (during the execution of the R string code passed to R::executeScript), the data frame will be available and its column-specific data will be available by using the standard R data frame element access expressions. 
 Consider the following R code:
-    
+```
 multiDim<-aimms4r::GetData(“MultiDim”);
 /*Access the first column (setI) by index value*/
 iColumn<-multiDim[1]
@@ -63,7 +63,8 @@ iColumn<-multiDim[1]
 jColumn<-multiDim[‘setJ’]
 /*Access the data column through the dollar sign notation*/
 valueColumn<-multiDim$multiDim
-    
+```
+
 # Aimms Storage Types and R Data Frame Column Data Types
 Aimms storage types such as integer, double, set element and string are maintained after retrieving AIMMS data through a call to GetData. Sets that are subsets of the Integers set will be retrieved as integer Columns. Normal sets will be retrieved as string Columns. Similarly, the values of element parameters will be retrieved depending on their range storage type.
 
