@@ -1,28 +1,28 @@
 # R-Link
 Contains 
 
-#The R programming language
+# The R programming language
 R is an open source programming language and software environment for statistical computing that is broadly used among statisticians, econometrists and data miners. R implements a wide variety of statistical techniques such as linear and nonlinear modeling, time-series analysis, classification and clustering. 
 
-#R4AIMMS
+# R4AIMMS
 R4AIMMS is an AIMMS system library that allows AIMMS to execute R user-defined code and provides data-passing facilities from AIMMS to the R runtime and vice versa. R4AIMMS extends the AIMMS experience with R’s universe of statistical analysis tools, ultimately allowing AIMMS users to write and use their own R scripts/libraries through AIMMS.
 
-#Requirements
+# Requirements
 The R4AIMMS system library requires that the R programming language is already installed on the target machine along with the Rcpp R package. The Rcpp package requires R’s version to be 3.0.0 or higher and can be installed from within R by typing install.packages(“Rcpp”).
 
-#R::executeScript Procedure
+# R::executeScript Procedure
 The library exposes the executeScript procedure through the R prefix. The procedure takes a scalar string as argument, representing the R script to be executed through AIMMS. The R script can contain any arbitrary R code, such as function calls, R object declarations, library installation/import statements and so on. In case of an R error, AIMMS will notify the user by raising this error. During R code execution through R::executeScript there is no visible output from the R output, thus the result to a call to R’s print function won’t be visible to the AIMMS user.
 
 
 
-#Data passing between AIMMS and the R runtime environment
+# Data passing between AIMMS and the R runtime environment
 We provide aimms4r, an R library that facilitates data passing between AIMMS and the R runtime. Aimms4r contains two R functions, the aimms4r::GetData and the aimms4r::SetData. 
 
-#Aimms4r::GetData
+# Aimms4r::GetData
 Aimms4r::GetData(scalar string: fully qualified identifier name)
 Aimms4r::GetData accepts as argument a scalar string representing the fully qualified name of an AIMMS identifier and returns either an R data frame in case of a multidimensional identifier, or a scalar R object containing the value of the AIMMS scalar. A value can have integer, string, set element or double storage data type. By calling GetData with the appropriate identifier’s name, the user can expose the identifier’s data content to the R universe and therefore apply any operation freely. In case there is no identifier with the name specified by the function’s input argument, the aimms4r::GetData function call will fail resulting in an error being raised in AIMMS. 
 
-#Data Frame Form
+# Data Frame Form
 Consider the 4-dimensional Identifier MultiDim(i,j,k,l), with i an index to the set I, j an index to the set J, k an index to the set K and l and index to set L subsequently.
     Set setI {
         Index: i;
@@ -62,14 +62,14 @@ jColumn<-multiDim[‘setJ’]
 /*Access the data column through the dollar sign notation*/
 valueColumn<-multiDim$multiDim
 
-#Aimms Storage Types and R Data Frame Column Data Types
+# Aimms Storage Types and R Data Frame Column Data Types
 Aimms storage types such as integer, double, set element and string are maintained after retrieving AIMMS data through a call to GetData. Sets that are subsets of the Integers set will be retrieved as integer Columns. Normal sets will be retrieved as string Columns. Similarly, the values of element parameters will be retrieved depending on their range storage type.
 
-#Aimms4r::SetData
+# Aimms4r::SetData
 Aimms4r::SetData(r object, scalar string: fully qualified identifier name)
 Aimms4r::SetData accepts two arguments, the first one is an R data frame or an R scalar value and the second one is a scalar string that represents the fully qualified name of an existing AIMMS identifier to which we want to assign the data of the first argument. In case of a mismatch between the argument data frame’s columns and the assigned identifier’s dimensions, an error will be raised and reported by AIMMS. Additionally, the function does not add new elements to the sets, in case it encounters a column element that does not exist in the corresponding set. In that case, an error will be raised by AIMMS, informing the user about that unknown element.
 
-#Storage Type Conversions when assigning R data to AIMMS (functionality partially there)
+# Storage Type Conversions when assigning R data to AIMMS (functionality partially there)
 The following conversion table holds when data is assigned to an identifier by using the aimms4r::SetData function. When we want to assign element data to an element identifier from R, the element value should be within range, for the assignment to be successful. Otherwise, it will fail and AIMMS will issue an error.
 FROM/TO	Element	Integer	Double	String
 Integer	OK if range=integer	OK	OK	FAIL
@@ -77,7 +77,7 @@ Double	OK if range=string	FAIL	OK	FAIL
 String	OK if range =string	FAIL	FAIL	OK
 
  
-#R Object Lifetime
+# R Object Lifetime
 Consider the following AIMMS statements where the R::executeScript procedure is used:
 1.	R::executeScript("data<-aimms4r::GetData('Populations')");
 2.	R::executeScript("populations<-data[3]");
@@ -88,7 +88,7 @@ In line 1, we retrieve the data of the AIMMS identifier “Populations” and in
 6.	R::executeScript("data<-NULL;populations<-NULL;");
 
 
-#AIMMS to R data passing and vice versa example
+# AIMMS to R data passing and vice versa example
 In this example, we will show how to use the R4AIMMS system library, how to execute R code through AIMMS and how to pass data along AIMMS to R and vice versa.
 
 1.	Open AIMMS and create a new project named “RAimmsTest”.
@@ -108,7 +108,7 @@ The second statement executes the R code which:
 3.	It writes the data back to the AIMMS “Cosines” identifier by calling aimms4r::SetData.
 
 
-#AIMMS4R package documentation
+# AIMMS4R package documentation
 GetData
 Usage
 GetData(identifierName)
