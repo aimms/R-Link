@@ -30,3 +30,8 @@ RFunctionalModel/RunFromCml/*.pdb
 RFunctionalModel/RunFromCml/*.dll
 
 .Rproj.user
+
+RAimmsTest/log
+RAimmsTest/backup
+RAimmsTest/.edited
+
