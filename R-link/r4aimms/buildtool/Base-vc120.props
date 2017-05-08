@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <BuildToolFolder>$(SolutionDir)buildtool</BuildToolFolder>
+    <DepsFolder>$(SolutionDir)deps</DepsFolder>
+    <TargetFolder>$(SolutionDir)target</TargetFolder>
+    <Toolset>vc120_$(Platform)_$(Configuration)</Toolset>
+    <Yabr>$(BuildToolFolder)\yabr.bat</Yabr>
+    <SignTool>$(BuildToolFolder)\sign.bat</SignTool>
+    <Aric>$(BuildToolFolder)\aric.bat</Aric>
+    <ArmiGen>$(BuildToolFolder)\armi-comp.bat</ArmiGen>
+    <DepsBase>$(DepsFolder)\$(Toolset)</DepsBase>
+    <DepsBin>$(DepsBase)\bin</DepsBin>
+    <DepsInc>$(DepsBase)\include</DepsInc>
+    <DepsLib>$(DepsBase)\lib</DepsLib>
+    <TargetBase>$(TargetFolder)\$(Toolset)</TargetBase>
+    <TargetBin>$(TargetBase)\bin</TargetBin>
+    <TargetInc>$(TargetBase)\include</TargetInc>
+    <TargetLib>$(TargetBase)\lib</TargetLib>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir>$(SolutionDir)tmp\$(ProjectName)\output\$(Toolset)\</OutDir>
+    <IntDir>$(SolutionDir)tmp\$(ProjectName)\intermediate\$(Toolset)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(BuildToolFolder)\prodver\include;$(DepsInc);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)tmp\prodver\output\$(Toolset);$(DepsLib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(BuildToolFolder)\prodver\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="BuildToolFolder">
+      <Value>$(BuildToolFolder)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DepsFolder">
+      <Value>$(DepsFolder)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TargetFolder">
+      <Value>$(TargetFolder)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Toolset">
+      <Value>$(Toolset)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Yabr">
+      <Value>$(Yabr)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Aric">
+      <Value>$(Aric)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DepsBase">
+      <Value>$(DepsBase)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DepsBin">
+      <Value>$(DepsBin)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DepsInc">
+      <Value>$(DepsInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DepsLib">
+      <Value>$(DepsLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TargetBase">
+      <Value>$(TargetBase)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TargetBin">
+      <Value>$(TargetBin)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TargetInc">
+      <Value>$(TargetInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TargetLib">
+      <Value>$(TargetLib)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

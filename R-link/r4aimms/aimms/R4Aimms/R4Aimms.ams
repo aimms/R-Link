@@ -1,0 +1,85 @@
+## ams_version=1.0
+
+LibraryModule Library_R4Aimms {
+    Prefix: r;
+    Interface: data { terminate, executeScript, initialize };
+    Procedure LibraryInitialization {
+        Body: {
+            EnvironmentGetString("AIMMSROOT", AIMMS_ROOT);
+            EnvironmentGetString("AIMMSROOTLOCATION", AIMMS_ROOT_LOCATION);
+
+            AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
+            if AIMMS_ROOT = "." then
+                EnvironmentGetString("AIMMSROOTLOCATION", AIMMS_ROOT);
+                AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
+            endif;
+            if AimmsStringConstants('Platform') <> "Windows" then
+                initialize("/usr/lib64/R");
+            else
+                initialize("");
+            endif;
+            if AIMMS_ROOT_LOCATION <> "" then
+                AIMMS_ROOT := AIMMS_ROOT_LOCATION;
+                AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
+            endif;
+
+            executeScript("library('Rcpp')");
+            executeScript("library('aimms4r', lib.loc='"+AIMMS_ROOT+"/Libraries/R4Aimms/R-packages')");
+        }
+    }
+    Section PublicSection {
+        ExternalProcedure terminate {
+            DllName: DLL_NAME;
+            Encoding: STR_ENCODE;
+            BodyCall: R_terminate();
+        }
+        ExternalProcedure executeScript {
+            Arguments: (RScript);
+            DllName: DLL_NAME;
+            Encoding: STR_ENCODE;
+            BodyCall: {
+                R_executeScript(
+                  scalar string : RScript
+                )
+            }
+            StringParameter RScript {
+                Property: Input;
+            }
+        }
+        ExternalProcedure initialize {
+            Arguments: (HomeFolderR);
+            DllName: DLL_NAME;
+            Encoding: STR_ENCODE;
+            BodyCall: R_initialize(scalar string : HomeFolderR);
+            StringParameter HomeFolderR {
+                Property: Input;
+            }
+        }
+    }
+    Section PrivateSection {
+        DeclarationSection CommonDeclaration {
+            ElementParameter STR_ENCODE {
+                Range: AllCharacterEncodings;
+                Definition: {
+                    if AimmsStringConstants('Platform') = "Windows" then
+                    	'UTF-16LE'
+                    else
+                    	'UTF-32LE'
+                    endif
+                }
+            }
+            StringParameter AIMMS_ROOT;
+            StringParameter AIMMS_ROOT_LOCATION;
+            
+            StringParameter DLL_NAME {
+                Definition: {
+                    if AimmsStringConstants('Platform') = "Windows" then
+                        "r4aimms.dll"
+                    else
+                        AIMMS_ROOT+"/Libraries/R4Aimms/libr4aimms.so"
+                    endif
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\REngine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsA_CCP_313asc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsA_CCP_313uni.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsA_CCP_314.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsA_UTF8_313asc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsA_UTF8_313uni.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsA_UTF8_314.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsFactory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsW_uni_313asc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsW_uni_313uni.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iAimmsW_uni_314.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\aimmsifcFactory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CharSetConverter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CharSetEnumerator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ConditionVariable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CPU.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dummy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DynamicLib.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EnvMap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Lock.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\LockImpl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PlatformThread.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Process.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThreadLocalStorage.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Time.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UCSTranformer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win_iconv.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\include\r4aimms\r4aimms.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\REngine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\aimmsifc\aimmsifc.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\aimmsifc\iAimms.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\aimmsifc\iAimmsCharTypes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Converters.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\iAimmsFactory.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ImplHelpers.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StringConversion.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\aimmsifc\aimmsifcFactory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\Array.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\CaseInsensitiveString.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\CharSetConverter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\CharSetEnumerator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\CommonAPI.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\ConditionVariable.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\CPU.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\DynamicLib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\EnvMap.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\ExportSTL.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\GlobalInclude.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\IntegerTypes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\IRefCnt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\Lock.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\LockImpl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\PlatformThread.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\Process.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\SynchronizedMap.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\ThreadLocalStorage.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\Time.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Common\UCSTransformer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iconv\iconv.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mlang.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{185163b4-b23d-4ec4-9a3a-370e60118467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{23ac902a-295a-4179-bb04-809db01c8c8f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

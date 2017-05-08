@@ -1,0 +1,17 @@
+/r4aimms-vc120.sdf
+/.cache
+/deps
+/target
+/tmp
+/aimms/R4Aimms/R4Aimms.nch
+/aimms/sandbox/backup
+/aimms/sandbox/log
+/*.opensdf
+/yabr-1.0.2.6.jar
+/aimms/sandbox/MainProject/*.nch
+/src/r4aimms/build/
+/src/r4aimms/dist/
+/src/sandbox/build/
+/src/sandbox/dist/
+*.suo
+*.sdf

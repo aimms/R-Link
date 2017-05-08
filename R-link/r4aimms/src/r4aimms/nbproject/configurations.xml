@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>include/Common/Array.h</itemPath>
+      <itemPath>include/Common/CPU.h</itemPath>
+      <itemPath>include/Common/CaseInsensitiveString.h</itemPath>
+      <itemPath>include/Common/CharSetConverter.h</itemPath>
+      <itemPath>include/Common/CharSetEnumerator.h</itemPath>
+      <itemPath>include/Common/CommonAPI.h</itemPath>
+      <itemPath>include/Common/ConditionVariable.h</itemPath>
+      <itemPath>include/Common/DynamicLib.h</itemPath>
+      <itemPath>include/Common/EnvMap.h</itemPath>
+      <itemPath>include/Common/ExportSTL.h</itemPath>
+      <itemPath>include/Common/GlobalInclude.h</itemPath>
+      <itemPath>include/Common/IRefCnt.h</itemPath>
+      <itemPath>include/Common/IntegerTypes.h</itemPath>
+      <itemPath>include/Common/Lock.h</itemPath>
+      <itemPath>include/Common/LockImpl.h</itemPath>
+      <itemPath>include/Common/PlatformThread.h</itemPath>
+      <itemPath>include/Common/Process.h</itemPath>
+      <itemPath>include/Common/SynchronizedMap.h</itemPath>
+      <itemPath>include/Common/ThreadLocalStorage.h</itemPath>
+      <itemPath>include/Common/Time.h</itemPath>
+      <itemPath>include/Common/UCSTransformer.h</itemPath>
+      <itemPath>include/aimmsifc/aimmsifcFactory.h</itemPath>
+      <itemPath>include/iconv/iconv.h</itemPath>
+      <itemPath>include/r4aimms/r4aimms.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/CPU.cpp</itemPath>
+      <itemPath>src/CharSetConverter.cpp</itemPath>
+      <itemPath>src/CharSetEnumerator.cpp</itemPath>
+      <itemPath>src/ConditionVariable.cpp</itemPath>
+      <itemPath>src/Converters.h</itemPath>
+      <itemPath>src/DynamicLib.cpp</itemPath>
+      <itemPath>src/EnvMap.cpp</itemPath>
+      <itemPath>src/ImplHelpers.h</itemPath>
+      <itemPath>src/Lock.cpp</itemPath>
+      <itemPath>src/LockImpl.cpp</itemPath>
+      <itemPath>src/PlatformThread.cpp</itemPath>
+      <itemPath>src/Process.cpp</itemPath>
+      <itemPath>src/REngine.cpp</itemPath>
+      <itemPath>src/REngine.h</itemPath>
+      <itemPath>src/StringConversion.h</itemPath>
+      <itemPath>src/ThreadLocalStorage.cpp</itemPath>
+      <itemPath>src/Time.cpp</itemPath>
+      <itemPath>src/UCSTranformer.cpp</itemPath>
+      <itemPath>src/aimmsifcFactory.cpp</itemPath>
+      <itemPath>src/dummy.cpp</itemPath>
+      <itemPath>src/iAimmsA_CCP_313asc.cpp</itemPath>
+      <itemPath>src/iAimmsA_CCP_313uni.cpp</itemPath>
+      <itemPath>src/iAimmsA_CCP_314.cpp</itemPath>
+      <itemPath>src/iAimmsA_UTF8_313asc.cpp</itemPath>
+      <itemPath>src/iAimmsA_UTF8_313uni.cpp</itemPath>
+      <itemPath>src/iAimmsA_UTF8_314.cpp</itemPath>
+      <itemPath>src/iAimmsFactory.cpp</itemPath>
+      <itemPath>src/iAimmsFactory.h</itemPath>
+      <itemPath>src/iAimmsW_uni_313asc.cpp</itemPath>
+      <itemPath>src/iAimmsW_uni_313uni.cpp</itemPath>
+      <itemPath>src/iAimmsW_uni_314.cpp</itemPath>
+      <itemPath>src/main.cpp</itemPath>
+      <itemPath>src/mlang.h</itemPath>
+      <itemPath>src/win_iconv.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug64" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>true</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>11</standard>
+          <commandlineTool>/opt/${DISTRO}/bin/g++</commandlineTool>
+          <incDir>
+            <pElem>include</pElem>
+            <pElem>src</pElem>
+          </incDir>
+          <commandLine>-fPIC -fvisibility=hidden</commandLine>
+          <preprocessorList>
+            <Elem>UNICODE</Elem>
+            <Elem>_DEBUG</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../deps/gcc61_x64_debug/lib</pElem>
+            <pElem>../../deps/gcc49_x64_debug/lib</pElem>
+            <pElem>/usr/lib64/R/lib</pElem>
+          </linkerAddLib>
+          <commandlineTool>/opt/${DISTRO}/bin/g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibStdlibItem>DynamicLinking</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="include/Common/Array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CPU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CaseInsensitiveString.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Common/CharSetConverter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CharSetEnumerator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CommonAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/ConditionVariable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/DynamicLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/EnvMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/ExportSTL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/GlobalInclude.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/IRefCnt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/IntegerTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/Lock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/LockImpl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/PlatformThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/SynchronizedMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/ThreadLocalStorage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Common/Time.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/UCSTransformer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/aimmsifc/aimmsifcFactory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/iconv/iconv.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/r4aimms/r4aimms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CPU.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CharSetConverter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CharSetEnumerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ConditionVariable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Converters.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DynamicLib.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/EnvMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ImplHelpers.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Lock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/LockImpl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlatformThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Process.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/REngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/REngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/StringConversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ThreadLocalStorage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Time.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/UCSTranformer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/aimmsifcFactory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/dummy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_CCP_313asc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_CCP_313uni.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_CCP_314.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_UTF8_313asc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_UTF8_313uni.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_UTF8_314.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsFactory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsFactory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/iAimmsW_uni_313asc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsW_uni_313uni.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsW_uni_314.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/mlang.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/win_iconv.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release64" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>11</standard>
+          <commandlineTool>/opt/${DISTRO}/bin/g++</commandlineTool>
+          <incDir>
+            <pElem>include</pElem>
+            <pElem>src</pElem>
+          </incDir>
+          <commandLine>-fPIC -fvisibility=hidden</commandLine>
+          <preprocessorList>
+            <Elem>NDEBUG</Elem>
+            <Elem>UNICODE</Elem>
+          </preprocessorList>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../deps/gcc61_x64_release/lib</pElem>
+            <pElem>../../deps/gcc49_x64_release/lib</pElem>
+            <pElem>/usr/lib64/R/lib</pElem>
+          </linkerAddLib>
+          <commandlineTool>/opt/${DISTRO}/bin/g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibStdlibItem>DynamicLinking</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="include/Common/Array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CPU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CaseInsensitiveString.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Common/CharSetConverter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CharSetEnumerator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/CommonAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/ConditionVariable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/DynamicLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/EnvMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/ExportSTL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/GlobalInclude.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/IRefCnt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/IntegerTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/Lock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/LockImpl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/PlatformThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/SynchronizedMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/ThreadLocalStorage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Common/Time.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Common/UCSTransformer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/aimmsifc/aimmsifcFactory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/iconv/iconv.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/r4aimms/r4aimms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CPU.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CharSetConverter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CharSetEnumerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ConditionVariable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Converters.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DynamicLib.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/EnvMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ImplHelpers.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Lock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/LockImpl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlatformThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Process.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/REngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/REngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/StringConversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ThreadLocalStorage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Time.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/UCSTranformer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/aimmsifcFactory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/dummy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_CCP_313asc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_CCP_313uni.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_CCP_314.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_UTF8_313asc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_UTF8_313uni.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsA_UTF8_314.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsFactory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsFactory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/iAimmsW_uni_313asc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsW_uni_313uni.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/iAimmsW_uni_314.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/mlang.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/win_iconv.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

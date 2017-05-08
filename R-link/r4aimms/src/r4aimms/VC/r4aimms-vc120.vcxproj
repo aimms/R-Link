@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="12.0">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BA0DBBB4-66AB-46E2-857F-416006DB6871}</ProjectGuid>
+    <RootNamespace>r4aimms</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>r4aimms</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+    <Import Project="$(SolutionDir)buildtool/Base-vc$(PlatformToolsetVersion).props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+    <Import Project="$(SolutionDir)buildtool/Base-vc$(PlatformToolsetVersion).props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+    <Import Project="$(SolutionDir)buildtool/Base-vc$(PlatformToolsetVersion).props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+    <Import Project="$(SolutionDir)buildtool/Base-vc$(PlatformToolsetVersion).props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">r4aimms-$(Toolset)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">r4aimms-$(Toolset)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">r4aimms-$(Toolset)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">r4aimms-$(Toolset)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>R4AIMMS_EXPORTS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\prodver\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>Testing and installing lib</Message>
+      <Command>:clean
+echo Cleaning $(TargetBase) 
+if exist $(TargetBase) rmdir /q /s $(TargetBase)
+
+:install
+set LIBRARY_DIR=$(TargetBase)\Libraries\R4Aimms
+mkdir %LIBRARY_DIR%\R-packages\aimms4r
+xcopy /s $(SolutionDir)aimms\R4Aimms\R4Aimms.ams %LIBRARY_DIR%\
+xcopy /s $(SolutionDir)aimms\R4Aimms\Project.xml %LIBRARY_DIR%\
+
+copy /y   $(TargetPath) %LIBRARY_DIR%\r4aimms.dll
+copy /y $(TargetDir)\$(TargetName).pdb %LIBRARY_DIR%\r4aimms.pdb
+
+@rem xcopy /s $(DepsBase)\aimms4r\*.* %LIBRARY_DIR%\R-packages\aimms4r\
+goto end
+
+:errorend
+echo error: unable to run testrunner
+:end
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>R4AIMMS_EXPORTS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\prodver\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>Testing and installing lib</Message>
+      <Command>:clean
+echo Cleaning $(TargetBase) 
+if exist $(TargetBase) rmdir /q /s $(TargetBase)
+
+:install
+set LIBRARY_DIR=$(TargetBase)\Libraries\R4Aimms
+mkdir %LIBRARY_DIR%\R-packages\aimms4r
+xcopy /s $(SolutionDir)aimms\R4Aimms\R4Aimms.ams %LIBRARY_DIR%\
+xcopy /s $(SolutionDir)aimms\R4Aimms\Project.xml %LIBRARY_DIR%\
+
+copy /y   $(TargetPath) %LIBRARY_DIR%\r4aimms.dll
+copy /y $(TargetDir)\$(TargetName).pdb %LIBRARY_DIR%\r4aimms.pdb
+
+@rem xcopy /s $(DepsBase)\aimms4r\*.* %LIBRARY_DIR%\R-packages\aimms4r\
+goto end
+
+:errorend
+echo error: unable to run testrunner
+:end
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>R4AIMMS_EXPORTS;WIN32;NDEBUG;_LIB;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\prodver\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>Testing and installing lib</Message>
+      <Command>:clean
+echo Cleaning $(TargetBase) 
+if exist $(TargetBase) rmdir /q /s $(TargetBase)
+
+:install
+set LIBRARY_DIR=$(TargetBase)\Libraries\R4Aimms
+mkdir %LIBRARY_DIR%\R-packages\aimms4r
+xcopy /s $(SolutionDir)aimms\R4Aimms\R4Aimms.ams %LIBRARY_DIR%\
+xcopy /s $(SolutionDir)aimms\R4Aimms\Project.xml %LIBRARY_DIR%\
+
+copy /y   $(TargetPath) %LIBRARY_DIR%\r4aimms.dll
+copy /y $(TargetDir)\$(TargetName).pdb %LIBRARY_DIR%\r4aimms.pdb
+
+@rem xcopy /s $(DepsBase)\aimms4r\*.* %LIBRARY_DIR%\R-packages\aimms4r\
+goto end
+
+:errorend
+echo error: unable to run testrunner
+:end
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>R4AIMMS_EXPORTS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\prodver\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>Testing and installing lib</Message>
+      <Command>:clean
+echo Cleaning $(TargetBase) 
+if exist $(TargetBase) rmdir /q /s $(TargetBase)
+
+:install
+set LIBRARY_DIR=$(TargetBase)\Libraries\R4Aimms
+mkdir %LIBRARY_DIR%\R-packages\aimms4r
+xcopy /s $(SolutionDir)aimms\R4Aimms\R4Aimms.ams %LIBRARY_DIR%\
+xcopy /s $(SolutionDir)aimms\R4Aimms\Project.xml %LIBRARY_DIR%\
+
+copy /y   $(TargetPath) %LIBRARY_DIR%\r4aimms.dll
+copy /y $(TargetDir)\$(TargetName).pdb %LIBRARY_DIR%\r4aimms.pdb
+
+@rem xcopy /s $(DepsBase)\aimms4r\*.* %LIBRARY_DIR%\R-packages\aimms4r\
+goto end
+
+:errorend
+echo error: unable to run testrunner
+:end
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\aimmsifc\aimmsifc.h" />
+    <ClInclude Include="..\include\aimmsifc\aimmsifcFactory.h" />
+    <ClInclude Include="..\include\aimmsifc\iAimms.h" />
+    <ClInclude Include="..\include\aimmsifc\iAimmsCharTypes.h" />
+    <ClInclude Include="..\include\Common\Array.h" />
+    <ClInclude Include="..\include\Common\CaseInsensitiveString.h" />
+    <ClInclude Include="..\include\Common\CharSetConverter.h" />
+    <ClInclude Include="..\include\Common\CharSetEnumerator.h" />
+    <ClInclude Include="..\include\Common\CommonAPI.h" />
+    <ClInclude Include="..\include\Common\ConditionVariable.h" />
+    <ClInclude Include="..\include\Common\CPU.h" />
+    <ClInclude Include="..\include\Common\DynamicLib.h" />
+    <ClInclude Include="..\include\Common\EnvMap.h" />
+    <ClInclude Include="..\include\Common\ExportSTL.h" />
+    <ClInclude Include="..\include\Common\GlobalInclude.h" />
+    <ClInclude Include="..\include\Common\IntegerTypes.h" />
+    <ClInclude Include="..\include\Common\IRefCnt.h" />
+    <ClInclude Include="..\include\Common\Lock.h" />
+    <ClInclude Include="..\include\Common\LockImpl.h" />
+    <ClInclude Include="..\include\Common\PlatformThread.h" />
+    <ClInclude Include="..\include\Common\Process.h" />
+    <ClInclude Include="..\include\Common\SynchronizedMap.h" />
+    <ClInclude Include="..\include\Common\ThreadLocalStorage.h" />
+    <ClInclude Include="..\include\Common\Time.h" />
+    <ClInclude Include="..\include\Common\UCSTransformer.h" />
+    <ClInclude Include="..\include\iconv\iconv.h" />
+    <ClInclude Include="..\include\r4aimms\r4aimms.h" />
+    <ClInclude Include="..\src\Converters.h" />
+    <ClInclude Include="..\src\iAimmsFactory.h" />
+    <ClInclude Include="..\src\ImplHelpers.h" />
+    <ClInclude Include="..\src\mlang.h" />
+    <ClInclude Include="..\src\REngine.h" />
+    <ClInclude Include="..\src\StringConversion.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\aimmsifcFactory.cpp" />
+    <ClCompile Include="..\src\CharSetConverter.cpp" />
+    <ClCompile Include="..\src\CharSetEnumerator.cpp" />
+    <ClCompile Include="..\src\ConditionVariable.cpp" />
+    <ClCompile Include="..\src\CPU.cpp" />
+    <ClCompile Include="..\src\dummy.cpp" />
+    <ClCompile Include="..\src\DynamicLib.cpp" />
+    <ClCompile Include="..\src\EnvMap.cpp" />
+    <ClCompile Include="..\src\iAimmsA_CCP_313asc.cpp" />
+    <ClCompile Include="..\src\iAimmsA_CCP_313uni.cpp" />
+    <ClCompile Include="..\src\iAimmsA_CCP_314.cpp" />
+    <ClCompile Include="..\src\iAimmsA_UTF8_313asc.cpp" />
+    <ClCompile Include="..\src\iAimmsA_UTF8_313uni.cpp" />
+    <ClCompile Include="..\src\iAimmsA_UTF8_314.cpp" />
+    <ClCompile Include="..\src\iAimmsFactory.cpp" />
+    <ClCompile Include="..\src\iAimmsW_uni_313asc.cpp" />
+    <ClCompile Include="..\src\iAimmsW_uni_313uni.cpp" />
+    <ClCompile Include="..\src\iAimmsW_uni_314.cpp" />
+    <ClCompile Include="..\src\Lock.cpp" />
+    <ClCompile Include="..\src\LockImpl.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\PlatformThread.cpp" />
+    <ClCompile Include="..\src\Process.cpp" />
+    <ClCompile Include="..\src\REngine.cpp" />
+    <ClCompile Include="..\src\ThreadLocalStorage.cpp" />
+    <ClCompile Include="..\src\Time.cpp" />
+    <ClCompile Include="..\src\UCSTranformer.cpp" />
+    <ClCompile Include="..\src\win_iconv.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
