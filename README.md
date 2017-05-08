@@ -89,6 +89,7 @@ Consider the following AIMMS statements where the R::executeScript procedure is 
 5.	```R::executeScript("aimms4r::SetData('Populations')");```
 
 In line 1, we retrieve the data of the AIMMS identifier “Populations” and in lines 2-4, we perform some calculations on the third column of the data frame containing the data of the identifier. In line 5, we finally assign back the processed data to the identifier. Consider that the R data frame “data” (created in line 1) and the R list “populations” are maintained through the sequence of different calls to the R::executeScript. After the last statement, both R objects will still be visible in the R context, thus they will still allocate some memory. In case that the “Populations” identifier contains a big amount of data, both the “data” data frame and the “populations” list will still require big amounts of memory. The AIMMS developer should keep that in mind and administer the memory usage consumed by the R context. Thus, R object clean statements could be added to ensure that we are not using more memory than needed. In our case, we could issue the following statement (assuming that we do not need both R variables after assigning the data to the identifier in line 5):
+
 6.	```R::executeScript("data<-NULL;populations<-NULL;");```
 
 
@@ -100,12 +101,12 @@ In this example, we will show how to use the R4AIMMS system library, how to exec
 3.	Create the Set “Amount” and specify its elements.
 4.	Create the one-dimensional Identifier “Cosines(i)”.
 5.	Create the procedure “fillCosines” and place the following two statements in its body attribute:
-    
+```
 Cosines(i) := ord(i);
 R::executeScript("data<-aimms4r::GetData('Cosines');"+
                  "data[2]<-cos(data[2]);" +
                  "aimms4r::SetData(data, 'Cosines');");
-    
+```    
 The first statement initializes the content of the Cosines identifier with the ordinal of each element of the set “Amount”.
 The second statement executes the R code which:
 1.	Retrieves a data frame named ‘data’ containing Cosines’s data by calling aimms4r::GetData
