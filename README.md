@@ -19,7 +19,8 @@ The library exposes the **executeScript** procedure through the **R prefix**. Th
 We provide aimms4r, an R library that facilitates data passing between AIMMS and the R runtime. Aimms4r contains two R functions, the aimms4r::GetData and the aimms4r::SetData. 
 
 # Aimms4r::GetData
-## Aimms4r::GetData(scalar string: fully qualified identifier name)
+**Aimms4r::GetData(scalar string: fully qualified identifier name)**
+
 **Aimms4r::GetData** accepts as argument a *scalar string* representing the fully qualified name of an AIMMS identifier and returns either an *R data frame* in case of a multidimensional identifier, or a *scalar R object* containing the value of the AIMMS scalar. A value can have **integer**, **string**, **set element** or **double storage data type**. By calling *GetData* with the appropriate identifier’s name, the user can expose the identifier’s data content to the R universe and therefore apply any operation freely. In case there is no identifier with the name specified by the function’s input argument, the *aimms4r::GetData* function call will fail resulting in an error being raised in AIMMS. 
 
 # Data Frame Form
@@ -68,7 +69,7 @@ valueColumn<-multiDim$multiDim
 ```
 
 # Aimms Storage Types and R Data Frame Column Data Types
-Aimms storage types such as integer, double, set element and string are maintained after retrieving AIMMS data through a call to GetData. Sets that are subsets of the Integers set will be retrieved as integer Columns. Normal sets will be retrieved as string Columns. Similarly, the values of element parameters will be retrieved depending on their range storage type.
+*Aimms storage types* such as **integer**, **double**, **set element** and **string** are maintained after retrieving AIMMS data through a call to *GetData*. Sets that are *subsets of the Integers set* will be retrieved as *integer Columns*. Normal sets will be retrieved as string Columns. Similarly, *the values of element parameters* will be retrieved *depending on their range storage type*.
 
 # Aimms4r::SetData
 Aimms4r::SetData(r object, scalar string: fully qualified identifier name)
