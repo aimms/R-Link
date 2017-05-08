@@ -166,8 +166,12 @@ SetData(data, identifierName)
 
 ## data 
 
-An R object containing data that, after the successful call of the function, will be assigned to the underlying AIMMS identifier. In case the identifier to which we want to assign the data has multiple dimensions, the R object needs to be a data frame with columns equal to the amount of assigned identifier’s dimensions plus one,  for the value column. The column elements should be contained in the corresponding AIMMS sets (to which the identifier indices are bound). The value column elements should have the same storage type as the identifier’s storage type. In case the AIMMS identifier is scalar, the R object also needs to be scalar and should have the same storage data type as the identifier.  
-identifierName The AIMMS identifier in which we want to store the underlying data.
+An R object containing data that, after the successful call of the function, will be *assigned to the underlying AIMMS identifier*. In case the identifier to which we want to assign the data has multiple dimensions, __the R object needs to be a data frame with columns equal to the amount of assigned identifier’s dimensions plus one,  for the value column__. The column elements should be contained in the corresponding AIMMS sets (to which the identifier indices are bound). The value column elements should have *the same storage type as the identifier’s storage type*. In case the AIMMS identifier is scalar, the R object also needs to be scalar and should have the same storage data type as the identifier.  
+
+
+## identifierName 
+
+The AIMMS identifier in which we want to store the underlying data.
 
 # Details
 
