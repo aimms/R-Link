@@ -1,5 +1,16 @@
 set OLDPATH=%PATH%
+IF "%1"=="Win32" goto run32
+goto run64 
 
+:run32
+set TARGET_ARCH=i386
+set TARGET_BITS=32
+goto run
+
+:run64
+pause
+set TARGET_ARCH=x64
+set TARGET_BITS=64
 goto run
 
 :run
