@@ -153,13 +153,21 @@ In case an unknown identifier’s name has been provided as argument, the functi
 data<-aimms4r::GetData(“Populations”)
 ```
 
-SetData
-Usage
+# SetData
+
+# Usage
+
 SetData(data, identifierName)
-Arguments
-data An R object containing data that, after the successful call of the function, will be assigned to the underlying AIMMS identifier. In case the identifier to which we want to assign the data has multiple dimensions, the R object needs to be a data frame with columns equal to the amount of assigned identifier’s dimensions plus one,  for the value column. The column elements should be contained in the corresponding AIMMS sets (to which the identifier indices are bound). The value column elements should have the same storage type as the identifier’s storage type. In case the AIMMS identifier is scalar, the R object also needs to be scalar and should have the same storage data type as the identifier.  
+
+# Arguments
+
+## data 
+
+An R object containing data that, after the successful call of the function, will be assigned to the underlying AIMMS identifier. In case the identifier to which we want to assign the data has multiple dimensions, the R object needs to be a data frame with columns equal to the amount of assigned identifier’s dimensions plus one,  for the value column. The column elements should be contained in the corresponding AIMMS sets (to which the identifier indices are bound). The value column elements should have the same storage type as the identifier’s storage type. In case the AIMMS identifier is scalar, the R object also needs to be scalar and should have the same storage data type as the identifier.  
 identifierName The AIMMS identifier in which we want to store the underlying data.
-Details
+
+# Details
+
 The function will raise an error when:
 •	an unknown identifier name has been provided as argument
 •	the R data frame does not have the same number of columns plus one as the AIMMS identifier
