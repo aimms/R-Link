@@ -8,7 +8,6 @@ set TARGET_BITS=32
 goto run
 
 :run64
-pause
 set TARGET_ARCH=x64
 set TARGET_BITS=64
 goto run
