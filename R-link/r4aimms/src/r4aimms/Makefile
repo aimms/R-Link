@@ -91,9 +91,6 @@ build: .build-post
 	rm -rf ${CND_TARGET_LIB}
 	mkdir -p ${CND_TARGET_INC}
 	mkdir -p ${CND_TARGET_LIB}
-	# unit test
-	#LD_LIBRARY_PATH=/opt/${DISTRO}/lib64:${CND_DEPS_LIB} ${CND_TESTRUNNER_BIN} "${CND_ARTIFACT_PATH_${CONF}}"
-
 
 # clean
 clean: .clean-post
