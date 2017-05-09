@@ -17,9 +17,9 @@ LibraryModule Library_R4Aimms {
             if AimmsStringConstants('Platform') <> "Windows" then
                 DirectoryGetFiles("/usr/lib/R","",filenames);
                 if card(filenames) = 0 then
-                    initialize("/usr/lib64/R");
+                    initialize("/usr/liba64/R");
                 else
-                    initialize("/usr/lib/R");
+                    initialize("/usr/liba/R");
                 endif;
 
             else
