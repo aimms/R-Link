@@ -224,3 +224,6 @@ SetData(population,’PopulationsInK’);
 ##Set scalar set element
 SetData(‘Amsterdam’,’CurrentCity’);
 ```
+
+# License
+(GPLv2)[https://www.gnu.org/licenses/gpl-2.0.html]
