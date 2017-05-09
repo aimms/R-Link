@@ -8,7 +8,7 @@ Description: Allows retrieving AIMMS identifier data from R & allows assigning R
              Data passing fron AIMMS to R takes place through the GetData function that retrieves AIMMS identifier data
              as r data frames or r string,double, integer objects in case of a scalar identifier. Data passing from R to AIMMS is achieved through the SetData function,
              which allows storing r data frame data or r scalars to particular multidimensional or scalar AIMMS identifiers.
-License: What license is it under?
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Imports: Rcpp (>= 0.12.9)
