@@ -14,7 +14,14 @@ LibraryModule Library_R4Aimms {
                 AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
             endif;
             if AimmsStringConstants('Platform') <> "Windows" then
-                initialize("/usr/lib/R");
+                if DirectoryExists("/usr/lib/R") = 1 then
+                    initialize("/usr/lib/R");
+                else 
+                    if DirectoryExists("/usr/lib64/R") = 1 then
+                        initialize("/usr/lib64/R")
+                    endif;
+                endif;
+
             else
                 initialize("");
             endif;
