@@ -13,18 +13,19 @@ LibraryModule Library_R4Aimms {
                 EnvironmentGetString("AIMMSROOTLOCATION", AIMMS_ROOT);
                 AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
             endif;
+
             if AimmsStringConstants('Platform') <> "Windows" then
-                if DirectoryExists("/usr/lib/R") = 1 then
+                DirectoryGetFiles("/usr/lib/R","",filenames);
+                if card(filenames) = 0 then
+                    initialize("/usr/lib64/R");
+                else
                     initialize("/usr/lib/R");
-                else 
-                    if DirectoryExists("/usr/lib64/R") = 1 then
-                        initialize("/usr/lib64/R")
-                    endif;
                 endif;
 
             else
                 initialize("");
             endif;
+
             if AIMMS_ROOT_LOCATION <> "" then
                 AIMMS_ROOT := AIMMS_ROOT_LOCATION;
                 AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
@@ -77,6 +78,13 @@ LibraryModule Library_R4Aimms {
             }
             StringParameter AIMMS_ROOT;
             StringParameter AIMMS_ROOT_LOCATION;
+            Set FileNumbers{
+                SubsetOf: Integers;
+                Index : fn;
+            };
+            StringParameter filenames{
+               IndexDomain: (fn);
+            };
             
             StringParameter DLL_NAME {
                 Definition: {
