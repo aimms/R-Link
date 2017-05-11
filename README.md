@@ -18,7 +18,8 @@ This repository contains the sourcecode for **aimms4r c++ R package** & **r4aimm
     * [GetData](#getdata)
     * [SetData](#setdata)
     * [Examples](#examples-1)
-
+* [License](#license)
+* [NOTICE](#notice)
 
 # The R programming language
 *[R](https://www.r-project.org/)* is an open source programming language and software environment for statistical computing that is broadly used among statisticians, econometrists and data miners. R implements a wide variety of statistical techniques such as linear and nonlinear modeling, time-series analysis, classification and clustering. 
