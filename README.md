@@ -5,12 +5,12 @@ This repository contains the sourcecode for **aimms4r c++ R package** & **r4aimm
 * [The R programming language](#the-r-programming-language)
 * [R4AIMMS](#r4aimms)
 * [Requirements](#requirements)
-* [Build R-Link]
-    * [Windows](#)
-    * [Linux](#)  
-* [Install R-Link]
-    * [Windows](#)
-    * [Linux](#)  
+* [Build R-Link](#build-r-link)
+    * [Windows](#windows)
+    * [Linux](#linux)  
+* [Install R-Link](#install-r-link)
+    * [Windows](#windows-1)
+    * [Linux](#linux-1)  
 * [R::executeScript Procedure](#rexecutescript-procedure)
 * [Data passing between AIMMS and the R runtime environment](#data-passing-between-aimms-and-the-r-runtime-environment)
     * [Aimms4r::GetData](#aimms4rgetdata)
@@ -60,11 +60,13 @@ in your AIMMS installation folder, under the **Libraries** folder. If you built 
 folder R4AIMMS will be located under the **target/{{compiler}}_{{architecture}}_{{configuration}}/Libraries**
 
 ### Example location:
+```
 $dir C:\Users\RAIMMSDeveloper\AppData\Local\AIMMS\IFA\Aimms\4.34.1.910-x86
 Api  Bin  Doc  Help Lib  **Libraries**  Modules  Solvers Templates Tutorial WebUIDev WebUIService
 
 $dir C:\Users\RAIMMSDeveloper\AppData\Local\AIMMS\IFA\Aimms\4.34.1.910-x86\Libraries
 AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary **R4AIMMS**
+```
 
 ## Linux
 After building the R-Link (or acquiring the binaries), you will need to place the **R4AIMMS** folder
@@ -72,19 +74,22 @@ in your AIMMS installation folder, under the **Libraries** folder. If you built 
 folder R4AIMMS will be located under the **target/{{compiler}}_{{architecture}}_{{configuration}}/Libraries**
 
 ### (RPM installed AIMMS) Example location:
+```
 $ls /usr/local/Aimms/4.23.10000
 Api  Bin  Doc  Lib  **Libraries**  Modules  Solvers
 
 $ls /usr/local/Aimms/4.23.10000/Libraries/
 AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary **R4AIMMS**
+```
 
 ### (IFA installed AIMMS) Example location:
+```
 $ls /home/RAIMMSDeveloper/.Aimms/4.34.4.934
 Api  Bin  Doc  Lib  **Libraries**  Modules  Solvers
 
 $ls /home/RAIMMSDeveloper/.Aimms/4.34.4.934/Libraries/
 AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary **R4AIMMS**
-
+```
 
 # R::executeScript Procedure
 The library exposes the **executeScript** procedure through the **R prefix**. The procedure takes a scalar string as argument, representing the R script to be executed through AIMMS. The R script can contain any arbitrary R code, such as function calls, R object declarations, library installation/import statements and so on. In case of an R error, AIMMS will notify the user by raising this error. __During R code execution through *R::executeScript* there is no visible output from the R output, thus the result to a call to R’s print function won’t be visible to the AIMMS user__.
