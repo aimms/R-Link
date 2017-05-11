@@ -227,3 +227,6 @@ SetData(‘Amsterdam’,’CurrentCity’);
 
 # License
 [GPLv2](https://www.gnu.org/licenses/gpl-2.0.html)
+
+# NOTICE:
+Because R is **licensed GPL** (see http://www.gnu.org/licenses), we are required to release the R-Link as well under the GPL license. Our interpretation of the GPL is that we cannot distribute the R-Link together with AIMMS without causing AIMMS to be available as open source (like the R-Link is). Similarly **you cannot distribute the R-Link as a library that is part of your AIMMS project or packed together into an .aimmspack file without making your AIMMS project open source**. In order to distribute your project/.aimmspack you should refer to the R-Link as a system library and separately install the R-Link into the AIMMS system library folder (see documentation) such that distribution of the R-Link is always separate from your project.
