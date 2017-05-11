@@ -65,7 +65,7 @@ $dir C:\Users\RAIMMSDeveloper\AppData\Local\AIMMS\IFA\Aimms\4.34.1.910-x86
 Api  Bin  Doc  Help Lib  **Libraries**  Modules  Solvers Templates Tutorial WebUIDev WebUIService
 
 $dir C:\Users\RAIMMSDeveloper\AppData\Local\AIMMS\IFA\Aimms\4.34.1.910-x86\Libraries
-AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary __ R4AIMMS __
+AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary ==> R4AIMMS <==
 ```
 
 ## Linux
@@ -79,7 +79,7 @@ $ls /usr/local/Aimms/4.23.10000
 Api  Bin  Doc  Lib  **Libraries**  Modules  Solvers
 
 $ls /usr/local/Aimms/4.23.10000/Libraries/
-AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary __ R4AIMMS __
+AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary ==> R4AIMMS <==
 ```
 
 ### (IFA installed AIMMS) Example location:
@@ -88,7 +88,7 @@ $ls /home/RAIMMSDeveloper/.Aimms/4.34.4.934
 Api  Bin  Doc  Lib  **Libraries**  Modules  Solvers
 
 $ls /home/RAIMMSDeveloper/.Aimms/4.34.4.934/Libraries/
-AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary __ R4AIMMS __
+AIMMSForecasting  AimmsPro AimmsProUI AimmsWebUI AIMMSXLLibrary ==> R4AIMMS <==
 ```
 
 # R::executeScript Procedure
