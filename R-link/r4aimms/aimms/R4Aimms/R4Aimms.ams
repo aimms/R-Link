@@ -6,19 +6,23 @@ LibraryModule Library_R4Aimms {
     Procedure LibraryInitialization {
         Body: {
             EnvironmentGetString("AIMMSROOT", AIMMS_ROOT);
-            EnvironmentGetString("AIMMSROOTLOCATION", AIMMS_ROOT_LOCATION);
+            if EnvironmentGetString("AIMMSROOTLOCATION", tmpString) = 1 then
+                AIMMS_ROOT := tmpString;
+            endif;
 
             AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
             if AIMMS_ROOT = "." then
-                EnvironmentGetString("AIMMSROOTLOCATION", AIMMS_ROOT);
+
                 AIMMS_ROOT := FindReplaceStrings( AIMMS_ROOT , "\\", "/" ) ;
             endif;
 
             if AimmsStringConstants('Platform') <> "Windows" then
                 DirectoryGetFiles("/usr/lib/R","",filenames);
                 if card(filenames) = 0 then
+                    !Ubuntu
                     initialize("/usr/lib64/R");
                 else
+                    !Centos
                     initialize("/usr/lib/R");
                 endif;
 
@@ -77,6 +81,7 @@ LibraryModule Library_R4Aimms {
                 }
             }
             StringParameter AIMMS_ROOT;
+            StringParameter tmpString;
             StringParameter AIMMS_ROOT_LOCATION;
             Set FileNumbers{
                 SubsetOf: Integers;

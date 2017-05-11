@@ -30,6 +30,8 @@ namespace r4aimms{
         virtual void executeScript(const wchar_t* szScript);
         virtual void terminate();
     private:
+        bool rIsAlreadyLoaded();
+    private:
         struct RModule; RModule* m_RModule;
     };
 
