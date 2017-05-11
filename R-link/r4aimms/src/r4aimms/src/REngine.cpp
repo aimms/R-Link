@@ -13,11 +13,12 @@
     You should have received a copy of the GNU General Public License
     along with R-Link.  If not, see <http://www.gnu.org/licenses/>.
 
-*/
+    */
 #include "REngine.h"
 #include "Common/GlobalInclude.h"
 #ifdef _HOST_COMPILER_MICROSOFT
 #include <windows.h>
+#include <psapi.h>
 #endif
 
 #include <sstream>
@@ -73,18 +74,18 @@ namespace r4aimms{
 
 
     struct REngine::RModule{
-        typedef int (*Rf_initEmbeddedR_t)(int argc, char *argv[]);
+        typedef int(*Rf_initEmbeddedR_t)(int argc, char *argv[]);
         Rf_initEmbeddedR_t Rf_initEmbeddedR;
 
-        typedef void (*Rf_endEmbeddedR_t)(int fatal);
+        typedef void(*Rf_endEmbeddedR_t)(int fatal);
         Rf_endEmbeddedR_t Rf_endEmbeddedR;
 
         typedef void* SEXP;
 
-        typedef SEXP (*Rf_protect_t)(SEXP);
+        typedef SEXP(*Rf_protect_t)(SEXP);
         Rf_protect_t Rf_protect;
 
-        typedef void (*Rf_unprotect_t)(int);
+        typedef void(*Rf_unprotect_t)(int);
         Rf_unprotect_t Rf_unprotect;
 
         typedef SEXP(*Rf_allocVector_t)(unsigned int, ptrdiff_t);
@@ -93,7 +94,7 @@ namespace r4aimms{
         typedef void(*SET_STRING_ELT_t)(SEXP x, ptrdiff_t i, SEXP v);
         SET_STRING_ELT_t SET_STRING_ELT;
 
-        typedef SEXP (*Rf_mkChar_t)(const char *);
+        typedef SEXP(*Rf_mkChar_t)(const char *);
         Rf_mkChar_t Rf_mkChar;
 
         typedef enum {
@@ -104,13 +105,13 @@ namespace r4aimms{
             PARSE_EOF
         } ParseStatus;
 
-        typedef SEXP (*R_ParseVector_t)(SEXP, int, ParseStatus*, SEXP);
+        typedef SEXP(*R_ParseVector_t)(SEXP, int, ParseStatus*, SEXP);
         R_ParseVector_t R_ParseVector;
 
-        typedef ptrdiff_t  (*Rf_length_t)(SEXP);
+        typedef ptrdiff_t(*Rf_length_t)(SEXP);
         Rf_length_t Rf_length;
 
-        typedef SEXP (*R_tryEval_t)(SEXP, SEXP, int *);
+        typedef SEXP(*R_tryEval_t)(SEXP, SEXP, int *);
         R_tryEval_t R_tryEval;
 
         typedef const char* (*R_curErrorBuf_t)();
@@ -125,7 +126,7 @@ namespace r4aimms{
 
         void* hModule;
 
-        RModule() 
+        RModule()
             : Rf_initEmbeddedR(0)
             , Rf_endEmbeddedR(0)
             , Rf_protect(0)
@@ -152,7 +153,7 @@ namespace r4aimms{
             void* symbolAddress = ::GetProcAddress((HMODULE)hModule, symbolName);
 #endif
 #ifdef _HOST_COMPILER_GCC
-            void* symbolAddress = dlsym(hModule,symbolName);
+            void* symbolAddress = dlsym(hModule, symbolName);
 #endif
             if (symbolAddress){
                 return (T)symbolAddress;
@@ -205,7 +206,7 @@ namespace r4aimms{
                 R_GlobalEnv = 0;
 #ifdef _HOST_COMPILER_MICROSOFT
                 FreeLibrary((HMODULE)hModule);
-                
+
 #endif
 #ifdef _HOST_COMPILER_GCC
                 dlclose(hModule);
@@ -244,39 +245,97 @@ namespace r4aimms{
         dllName = binaryFolder + L"\\R.dll";
         std::wstring envPath = _wgetenv(L"Path");
         envPath = binaryFolder + L";" + envPath;
-        _wputenv((std::wstring(L"Path=") +  envPath).c_str());
+        _wputenv((std::wstring(L"Path=") + envPath).c_str());
 #endif
-        
+
 #ifdef _TARGET_PLATFORM_LINUX
         setenv("R_HOME", w2a(szHomeFolderR).c_str(), 1);
         dllName += L"/lib/libR.so";
 #endif
 
+        bool rIsLoaded = rIsAlreadyLoaded();
         m_RModule = new RModule();
+
         if (!m_RModule->open(dllName.c_str())){
             delete m_RModule;
             m_RModule = 0;
-            throw std::runtime_error("Could not locate R, shared object "+w2a(dllName)+ " could not be opened..." );
+            throw std::runtime_error("Could not locate R, shared object " + w2a(dllName) + " could not be opened...");
         }
+        if (rIsLoaded){ return; }
         const char *R_argv[] = { (char*)"r4aimms", "--gui=none", "--no-save", "--silent", "--vanilla", "--slave", "--no-readline" };
         int R_argc = sizeof(R_argv) / sizeof(R_argv[0]);
         m_RModule->Rf_initEmbeddedR(R_argc, (char**)R_argv);
-
     }
 
 
     void REngine::terminate()
     {
-        if (m_RModule){
+        /*if (m_RModule){
             m_RModule->Rf_endEmbeddedR(0);
             m_RModule->close();
             delete m_RModule;
             m_RModule = 0;
+            }*/
+    }
+
+    bool REngine::rIsAlreadyLoaded()
+    {
+        bool rIsLoaded = false;
+
+#ifdef _TARGET_PLATFORM_WINDOWS
+        HMODULE hMods[1024];
+        HANDLE hProcess;
+        DWORD cbNeeded;
+        unsigned int i;
+
+        // Print the process identifier.
+        auto processId = GetCurrentProcessId();
+        printf("\nProcess ID: %u\n", processId);
+
+        // Get a handle to the process.
+
+        hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
+            PROCESS_VM_READ,
+            FALSE, processId);
+
+        if (nullptr == hProcess)
+            return 1;
+
+        // Get a list of all the modules in this process.
+        if (EnumProcessModules(hProcess, hMods, sizeof(hMods), &cbNeeded))
+        {
+            for (i = 0; i < (cbNeeded / sizeof(HMODULE)); i++)
+            {
+                TCHAR szModName[MAX_PATH];
+
+                // Get the full path to the module's file.
+
+                if (GetModuleFileNameEx(hProcess, hMods[i], szModName,
+                    sizeof(szModName) / sizeof(TCHAR)))
+                {
+                    std::wstring moduleName(szModName);
+                    if (moduleName.find(L"\\R.dll") != std::wstring::npos){
+                        rIsLoaded = true;
+                        break;
+                    }
+                }
+            }
         }
+
+        // Release the handle to the process.
+
+        CloseHandle(hProcess);
+#endif
+        return rIsLoaded;
     }
 
     void REngine::executeScript(const wchar_t* szScript)
     {
+        if (!m_RModule)
+        {
+            throw std::runtime_error("Make sure that R is installed in your system. In case R is missing, install it and then close and reopen AIMMS.");
+        }
+
         RModule::SEXP ans = *m_RModule->R_NilValue;
         RModule::SEXP cmdSexp = *m_RModule->R_NilValue;
         RModule::SEXP cmdexpr = *m_RModule->R_NilValue;
