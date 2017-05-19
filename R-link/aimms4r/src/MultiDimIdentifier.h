@@ -142,6 +142,13 @@ public:
     return false;
   }
 
+  void setModeForNewElements(int mode){
+      this->modeForUnknownElements = mode;
+      for(auto &domain : m_Domain){
+          domain->setModeForUnknownElements(mode);
+      }
+  }
+
   void storeTo(Aimms::IReadTable& dt){
 
     if (!m_Domain.size()){
@@ -214,9 +221,7 @@ public:
         for(int i = 0;i<domainSize;i++){
              m_Columns[i]->getConvertor()->assignAimmsIndex(values[i],row );
         }
-
         m_Value->getConvertor()->assignAimmsValue( values[domainSize] ,v);
-
         if(!m_API->ValueAssignW(m_Handle, &row[0], &v) ){
             throw AimmsException("MultiDimIdentifier::loadFrom::assignAimmsValue",m_API);
         }
@@ -224,7 +229,6 @@ public:
         currentRow++;
         row.clear();
     }
-
     return true;
   }
 
@@ -249,6 +253,7 @@ private:
 
     std::vector<std::unique_ptr<ColumnBase>> m_Columns;
     std::unique_ptr<ColumnBase> m_Value;
+    int modeForUnknownElements = 0 ;
   };
 };
 

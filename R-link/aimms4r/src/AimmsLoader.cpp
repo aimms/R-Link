@@ -69,6 +69,8 @@ void AimmsLoader::PopulateFunctionNameOffsets()
   m_AimmsFunctions.insert(std::pair<SupportedAimmsFunctions, APIFunction>(SupportedAimmsFunctions::FCN_AimmsValueAssignW, AimmsFunction<int(int, int*, AimmsValueW *)>("AimmsValueAssignW")));
   m_AimmsFunctions.insert(std::pair<SupportedAimmsFunctions, APIFunction>(SupportedAimmsFunctions::FCN_AimmsValueAssignA, AimmsFunction<int(int, int*, AimmsValue *)>("AimmsValueAssignA")));
   m_AimmsFunctions.insert(std::pair<SupportedAimmsFunctions, APIFunction>(SupportedAimmsFunctions::FCN_AimmsIdentifierEmpty, AimmsFunction<int(int)>("AimmsIdentifierEmpty")));
+  m_AimmsFunctions.insert(std::pair<SupportedAimmsFunctions, APIFunction>(SupportedAimmsFunctions::FCN_AimmsSetAddElement, AimmsFunction<int(int, wchar_t*,int*)>("AimmsSetAddElementRecursiveW")));
+
 
 /*  AIMMSAPI(int) AimmsIdentifierHandleCreateW(wchar_t *name, int *domain, int *slicing,
       int flags, int *handle);*/
@@ -176,6 +178,11 @@ AimmsLoader::fnValueAssignA AimmsLoader::ValueAssignA(){
 AimmsLoader::fnIdentifierEmpty AimmsLoader::IdentifierEmpty(){
   return (AimmsLoader::fnIdentifierEmpty) GetAimmsFunctionCC<AimmsLoader::fnIdentifierEmpty>(SupportedAimmsFunctions::FCN_AimmsIdentifierEmpty);
 }
+
+AimmsLoader::fnSetAddElement AimmsLoader::SetAddElement(){
+  return (AimmsLoader::fnSetAddElement) GetAimmsFunctionCC<AimmsLoader::fnSetAddElement>(SupportedAimmsFunctions::FCN_AimmsSetAddElement);
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 

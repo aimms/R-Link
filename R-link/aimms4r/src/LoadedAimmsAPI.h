@@ -208,5 +208,13 @@ private:
       END_LOADED_CALL
     }
 
+    virtual int SetAddElement (int handle, wchar_t* newElementLabel, int* element) override {
+      START_LOADED_CALL
+      auto call = m_Loader.get()->SetAddElement();
+      if(call) return call(handle, newElementLabel, element);
+      END_LOADED_CALL
+    }
+
+
 };
 }

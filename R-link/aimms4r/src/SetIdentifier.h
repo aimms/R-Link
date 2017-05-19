@@ -37,6 +37,8 @@ private:
   std::map<std::wstring,int> m_LabelsToElements;
   int m_First = -1;
   int m_Card = -1;
+  int modeForUnknownElements = 0;
+
 public:
 
   SetIdentifier(std::wstring identifierName,
@@ -69,6 +71,11 @@ public:
 
   }
 
+  void setModeForUnknownElements(int mode){
+      //std::wcout << "setting the addNew element flag in the set"<< addNewElement <<  std::endl;
+      this->modeForUnknownElements = mode;
+  }
+
   int getCard() const{return (int)m_Labels.size();}
 
   std::wstring getElementName(int elem){
@@ -77,18 +84,40 @@ public:
 
   int getElementFromLabel(std::wstring label){
       if( m_LabelsToElements.find(label) == m_LabelsToElements.end() ){
+          if ( modeForUnknownElements == 1 && addMissingElement(label) ){
+            return m_LabelsToElements[label] + m_First;
+          }
           throw AimmsException("Couldn't find set element with label " + w2a( label) + " in Set "+w2a(m_IdentifierName) );
       }
       return m_LabelsToElements[label] + m_First;
   }
 
+  bool addMissingElement(std::wstring& label){
+    int newElementNumber = 0;
+    //set_add_element
+    int result = m_API->SetAddElement(m_Handle, const_cast<wchar_t*>(label.c_str()), &newElementNumber);
+
+    if(!result){ return false; }
+
+    //lets add it to our cache
+    m_LabelsToElements[label.c_str() ] = newElementNumber - m_First;
+    //std::wcout << "New element " << label.c_str() << "added with elem number " << newElementNumber << std::endl;
+    std::map<std::wstring,int>::const_iterator it = m_LabelsToElements.find(label.c_str() );
+
+    int oldSize = m_Labels.size();
+    m_Labels.resize(oldSize + 1);
+
+    m_Labels[newElementNumber - m_First] = it->first.c_str();
+    m_Card = oldSize + 1;
+    return true;
+  }
 
   bool load(){
     if(m_Card == -1 || m_First == -1) return false;
-
     int elem = 0;
     int i = 1;
     int ret = 0;
+
     std::map<std::wstring,int>::const_iterator it;
     while (true){
       ret = m_API->SetOrdinalToElement(m_Handle, i, &elem);
@@ -101,6 +130,8 @@ public:
       m_LabelsToElements[m_CachedElementName.String] = elem - m_First;
       it = m_LabelsToElements.find(m_CachedElementName.String);
       m_Labels[elem - m_First] = it->first.c_str();
+
+
       i++;
     }
     return true;

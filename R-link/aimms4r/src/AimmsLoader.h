@@ -138,6 +138,7 @@ namespace Aimms{
             FCN_AimmsValueAssignW,
             FCN_AimmsValueAssignA,
             FCN_AimmsIdentifierEmpty,
+            FCN_AimmsSetAddElement,
             ALL
         };
 
@@ -241,6 +242,9 @@ namespace Aimms{
 
         using fnIdentifierEmpty =  int(CC *)(int);
         fnIdentifierEmpty IdentifierEmpty();
+
+        using fnSetAddElement =  int(CC *)(int, wchar_t*,int* );
+        fnSetAddElement SetAddElement();
 
       private:
         void StoreLastError(std::wstring);

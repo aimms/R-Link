@@ -27,11 +27,23 @@ namespace Aimms{
 
     public:
         AimmsResources(){}
-        ~AimmsResources(){}
+        ~AimmsResources(){
+          cleanSpace();
+        }
         int getProjectHandle(){ return m_ProjectHandle; }
         void setProjectHandle(int projectHandle){
           m_ProjectHandle = projectHandle;
         }
+
+        void cleanSpace(){
+            if(m_Space.get()){
+               AimmsSpace* sp = m_Space.release();
+               sp->setProjectIsClosed(m_ProjectHandle == 0);
+               delete sp;
+               sp = nullptr;
+            }
+        }
+
         AimmsSpace* getSpace(){
           if (m_Space.get()==nullptr){
 #ifdef _WIN32

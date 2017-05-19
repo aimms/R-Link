@@ -29,14 +29,20 @@ public:
   , m_IdentifierPrefix(identifierPrefix)
   , m_API(api)
   , m_Handle(handle)
-  {}
+  {
+  }
 
   virtual ~BaseIdentifier(){
 
-    if (m_API){
+    if (m_API && !m_ProjectIsClosed){
       if (m_API->IdentifierHandleDelete(m_Handle)){
+
       }
     }
+  }
+
+  virtual void setProjectIsClosed(bool projectIsClosed){
+      m_ProjectIsClosed = projectIsClosed;
   }
 
   const std::wstring& getIdentifierPrefix() const{
@@ -51,5 +57,6 @@ protected:
   std::wstring m_IdentifierPrefix;
   std::shared_ptr<IAimms> m_API;
   int m_Handle;
+  bool m_ProjectIsClosed = true;
 };
 };

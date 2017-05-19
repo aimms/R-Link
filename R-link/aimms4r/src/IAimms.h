@@ -136,6 +136,8 @@ public:
   virtual int ValueAssignW (int, int*,  Aimms::AimmsValueW*) = 0;
   virtual int ValueAssignA (int, int*,  Aimms::AimmsValue*) = 0;
   virtual int IdentifierEmpty (int ) = 0;
+  virtual int SetAddElement (int, wchar_t*, int* ) = 0;
+
 
 
 };
