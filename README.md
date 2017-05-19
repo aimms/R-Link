@@ -34,7 +34,7 @@ This repository contains the sourcecode for **aimms4r c++ R package** & **r4aimm
 *R4AIMMS* is an AIMMS system library that allows AIMMS to execute R user-defined code and provides data-passing facilities from AIMMS to the R runtime and vice versa. R4AIMMS extends the AIMMS experience with R’s universe of statistical analysis tools, ultimately allowing AIMMS users to write and use their own R scripts/libraries through AIMMS.
 
 # Requirements
-The R4AIMMS system library **requires** that the *R programming language* is already installed on the target machine along with the **Rcpp R package**. The Rcpp package requires R’s version to be **3.0.0 or higher** and can be installed from within R by typing ```install.packages(“Rcpp”)```.
+The R4AIMMS system library **requires** that the *R programming language* is already installed on the target machine along with the **Rcpp R package**. The Rcpp package requires R’s version to be ** >= 3.0.0 and <= 3.3.0 r** and can be installed from within R by typing ```install.packages(“Rcpp”)```.
 
 # Build R-Link
 ## Windows
