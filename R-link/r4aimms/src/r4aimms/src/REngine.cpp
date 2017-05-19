@@ -223,12 +223,16 @@ namespace r4aimms{
 
     REngine::~REngine()
     {
+        executeScript(L"aimms4r::CloseProject()");
 
     }
 
     void REngine::initialize(const wchar_t* szHomeFolderR)
     {
-
+        if (!szHomeFolderR){
+            throw std::runtime_error("Make sure that R is installed in your system. In case R is missing, install it and then close and reopen AIMMS.");
+            return;
+        }
 
         std::wstring dllName = szHomeFolderR;
         std::wstring binaryFolder = szHomeFolderR;
@@ -270,6 +274,9 @@ namespace r4aimms{
 
     void REngine::terminate()
     {
+        if (m_RModule){
+            executeScript(L"aimms4r::CloseProject()");
+        }
         /*if (m_RModule){
             m_RModule->Rf_endEmbeddedR(0);
             m_RModule->close();

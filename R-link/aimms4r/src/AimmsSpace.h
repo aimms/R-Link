@@ -29,7 +29,7 @@ public:
   }
 public:
   void clear(){
-    m_Sets.clear();
+      m_Sets.clear();
   }
 
   void setAimmsAPI(std::shared_ptr<IAimms> api)
@@ -40,6 +40,12 @@ public:
 
   int getActiveSets(){
     return m_Sets.size();
+  }
+
+  void setProjectIsClosed(bool isClosed){
+      for(auto &s: m_Sets){
+        s.second->setProjectIsClosed(isClosed);
+      }
   }
 
   std::shared_ptr<BaseIdentifier> getIdentifier(const std::wstring &name) const{

@@ -105,9 +105,15 @@ bool CloseProject() {
   auto api = Aimms::AimmsEnvironmentState::getInstance().getAimmsResources().getAimmsAPI();
   if(!api) return false;
 
+
   auto state = Aimms::AimmsEnvironmentState::getInstance();
+  if(state.getAimmsResources().getProjectHandle()){
+    state.getAimmsResources().cleanSpace();
+  }
+
   int handle =       state.getAimmsResources().getProjectHandle();
   if(!handle) return false;
+
 
   if(api->ProjectClose(handle, 0)){
       //Closed successfully
@@ -145,10 +151,14 @@ SEXP GetData(std::wstring identifierName) {
 
 
 // [[Rcpp::export]]
-void SetData(SEXP data, std::wstring identifierName) {
+void SetData(SEXP data, std::wstring identifierName, int modeForUnknownElements = 0) {
   auto space = Aimms::AimmsEnvironmentState::getAimmsResources().getSpace();
   if(!space) throw std::logic_error("You need to load lib Aimms dll & open an Aimms Project first..");
   std::shared_ptr<Aimms::MultiDimIdentifier> multiDim = space->obtainIdentifier(identifierName);
+
+  //the boolean addNewElement will be taken into account from the Identifier's sets
+  multiDim->setModeForNewElements(modeForUnknownElements);
+
   if(!multiDim->getDimension()){
       R::Value rval(data);
       multiDim->loadScalarFrom(rval);
@@ -160,5 +170,7 @@ void SetData(SEXP data, std::wstring identifierName) {
   if( multiDim->loadFrom(wt) ){
     //Successful write to Identifier
   }
+
+  space->clear();
   return;
 }
