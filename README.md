@@ -241,7 +241,7 @@ data<-aimms4r::GetData(“Populations”)
 
 # Usage
 
-SetData(data, identifierName)
+SetData(data, identifierName, modeForUnknownElements=0)
 
 # Arguments
 
@@ -254,15 +254,21 @@ An R object containing data that, after the successful call of the function, wil
 
 The AIMMS identifier in which we want to store the underlying data.
 
+
+## modeForUnknownElements
+
+The mode can be set to __0 or 1__, where __0 is the default value__. When the mode is 0, AIMMS will raise an error in case the R data frame to be assigned to an AIMMS identifier contains tuple elements that are not present in the identifier's domain sets. When the mode is set to __1__, __new tuple elements will be added to the referenced sets & recursively to each set's rootsets__.
+
 # Details
 
 The function will raise an error when:
 * an unknown identifier name has been provided as argument
 * the R data frame does not have the same number of columns plus one as the AIMMS identifier
-* the R object represents an AIMMS set element and that element is not contained in the range of the identifier 
+* the R object represents an AIMMS set element and that element is not contained in the range of the identifier (and the modeForUnknownElements argument is set to 0)
 
 # Examples
 ```
+##1. Showcase of SetData where modeForUnknownElements = 0
 ##Consider the following AIMMS declarations:
 Set Cities {
     Index: c;
@@ -286,6 +292,38 @@ SetData(population,’PopulationsInK’);
 ##Set scalar set element
 SetData(‘Amsterdam’,’CurrentCity’);
 ```
+
+```
+##2. Showcase of SetData where modeForUnknownElements is 0 and 1
+##Consider the following AIMMS declarations:
+
+Set DutchCities {
+    Index: c;
+    InitialData: data{'Amsterdam','Haarlem','Utrecht','Alkmaar'};
+}
+
+Parameter Populations {
+    IndexDomain: (c);
+    InitialData: 0;
+}
+
+###Consider the following R code:
+population<-data.frame(c(‘Amsterdam’,’Haarlem’,'Leeuwarden','Groningen'),c(779, 150, 108, 584 ))
+
+##Set multidimensional identifier data
+SetData(population,’Populations’);
+
+##AIMMS error
+==> R_tryEval: Error in SetData(population, "Populations") :    Couldn't find set element with label Leeuwarden in Set Cities 
+##Leeuwarden is not contained in the set DutchCities! Let's try the above statement again but by using modeForUnknownElements equal to 1
+
+
+SetData(population,’Populations’,modeForUnknownElements = 1);
+
+```
+The last statement where __modeForUnknownElements__ has value equal to 1 will succeed; the AIMMS identifier Populations will have values for the tuples 'Amsterdam','Haarlem',__'Leeuwarden'__,'Groningen'
+and the string __'Leeuwarden' will be an element of the set DutchCities__. 
+
 
 # License
 [GPLv2](https://www.gnu.org/licenses/gpl-2.0.html)
