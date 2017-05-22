@@ -152,6 +152,9 @@ SEXP GetData(std::wstring identifierName) {
 
 // [[Rcpp::export]]
 void SetData(SEXP data, std::wstring identifierName, int modeForUnknownElements = 0) {
+  if(modeForUnknownElements < 0 || modeForUnknownElements > 1){
+    throw std::logic_error("The mode for unknown elements should be either 0 or 1.");
+  }
   auto space = Aimms::AimmsEnvironmentState::getAimmsResources().getSpace();
   if(!space) throw std::logic_error("You need to load lib Aimms dll & open an Aimms Project first..");
   std::shared_ptr<Aimms::MultiDimIdentifier> multiDim = space->obtainIdentifier(identifierName);
