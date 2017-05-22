@@ -315,7 +315,8 @@ SetData(population,’Populations’);
 
 ##AIMMS error
 ==> R_tryEval: Error in SetData(population, "Populations") :    Couldn't find set element with label Leeuwarden in Set Cities 
-##Leeuwarden is not contained in the set DutchCities! Let's try the above statement again but by using modeForUnknownElements equal to 1
+##Leeuwarden is not contained in the set DutchCities! 
+##Let's try the above statement again but by using modeForUnknownElements equal to 1!
 
 
 SetData(population,’Populations’,modeForUnknownElements = 1);
