@@ -172,36 +172,37 @@ String | OK if range=string | FAIL | FAIL | OK
  
 # R Object Lifetime
 Consider the following AIMMS statements where the R::executeScript procedure is used:
-1.  ```R::executeScript("data<-aimms4r::GetData('Populations')");```
-2.	```R::executeScript("populations<-data[3]");```
-3.	```R::executeScript("populations <- populations * 100;");```
-4.	```R::executeScript("data[3]<-populations");```
-5.	```R::executeScript("aimms4r::SetData(data, 'Populations')");```
+1.  ```R::executeScript("data<-aimms4r::GetData('Population')");```
+2.	```R::executeScript("population<-data[3]");```
+3.	```R::executeScript("population <- population * 100;");```
+4.	```R::executeScript("data[3]<-population");```
+5.	```R::executeScript("aimms4r::SetData(data, 'Population')");```
 
-In line 1, we retrieve the data of the __AIMMS identifier “Populations”__ and in lines 2-4, we perform some calculations on the third column of the data frame containing the data of the identifier. In line 5, we finally assign back the processed data to the identifier. Consider that the __R data frame “data”__ (created in line 1) and the __R list “populations”__ are maintained through the sequence of different calls to the R::executeScript. After the last statement, both R objects will still be visible in the R context, thus they will __still allocate some memory__. In case that the “Populations” identifier contains a big amount of data, both the “data” data frame and the “populations” list will still require big amounts of memory. __The AIMMS developer should keep that in mind and administer the memory usage consumed by the R context__. Thus, R object clean statements could be added to ensure that we are not using more memory than needed. In our case, we could issue the following statement (assuming that we do not need both R variables after assigning the data to the identifier in line 5):
+In line 1, we retrieve the data of the __AIMMS identifier “Population”__ and in lines 2-4, we perform some calculations on the third column of the data frame containing the data of the identifier. In line 5, we finally assign back the processed data to the identifier. Consider that the __R data frame “data”__ (created in line 1) and the __R list “population”__ are maintained through the sequence of different calls to the R::executeScript. After the last statement, both R objects will still be visible in the R context, thus they will __still allocate some memory__. In case that the “Populations” identifier contains a big amount of data, both the “data” data frame and the “populations” list will still require big amounts of memory. __The AIMMS developer should keep that in mind and administer the memory usage consumed by the R context__. Thus, R object clean statements could be added to ensure that we are not using more memory than needed. In our case, we could issue the following statement (assuming that we do not need both R variables after assigning the data to the identifier in line 5):
 
-6.	```R::executeScript("data<-NULL;populations<-NULL;");```
+6.	```R::executeScript("data<-NULL;population<-NULL;");```
 
 
 # AIMMS to R data passing and vice versa example
 In this example, we will show *how to use the R4AIMMS system library*, *how to execute R code through AIMMS* and *how to pass data along AIMMS to R and vice versa*.
 
-1.	*Open AIMMS* and create a __new project named “RAimmsTest”__.
-2.	Add the __system library “R4AIMMS”__ to the model.
-3.	Create the __Set “Amount”__ and specify its elements.
-4.	Create the __one-dimensional Identifier “Cosines(i)”__.
-5.	Create the __procedure “fillCosines”__ and place the following two statements in its body attribute:
+1.	*Open AIMMS* and create a __new project named “AIMMS-R-App”__.
+2.	Add a __system library “R4AIMMS”__ to the model.
+3.	Create a Set “Items” with index "i" and fill it by e.g.data{item-01..item-10}.
+4.	Create a Parameter InputValue(i).
+5.	Create a Parameter ResultValue(i) to store the result values.
+6.  Create a Procedure DetermineResultValueUsingR.
 ```
-Cosines(i) := ord(i);
-R::executeScript("data<-aimms4r::GetData('Cosines');"+
+InputValue(i) := ord(i);
+R::executeScript("data<-aimms4r::GetData('InputValue');"+
                  "data[2]<-cos(data[2]);" +
-                 "aimms4r::SetData(data, 'Cosines');");
+                 "aimms4r::SetData(data, 'ResultValue');");
 ```    
-The first statement initializes the content of the *Cosines identifier* with the ordinal of each element of the *set “Amount”*.
+The first statement initializes the content of the *"InputValue"* identifier with the ordinal of each element of the *set “Items”*.
 The second statement executes the R code which:
-1.	Retrieves __a data frame named ‘data’__ containing *Cosines’s data by calling aimms4r::GetData*
-2.	It accesses the *second column of the Data Frame* (the column that holds the actual data), applies the cosine function to each element of the column and assigns back the new data frame back to the data object
-3.	It writes the data back to the __AIMMS “Cosines” identifier__ by calling *aimms4r::SetData*.
+1.	Retrieves __a data frame named ‘data’__ containing *InputValue’s  data by calling aimms4r::GetData*.
+2.	It accesses the *second column of the Data Frame* (the column that holds the actual data), applies the cosine function to each element of the column and assigns back the new data frame back to the data object.
+3.	It writes the data back to the __AIMMS "ResultValue" identifier__ by calling *aimms4r::SetData*.
 
 
 # AIMMS4R package documentation
@@ -230,8 +231,8 @@ In case an unknown identifier’s name has been provided as argument, the functi
 
 # Examples
 ```
-##Assuming there is an AIMMS identifier with name “Populations” in the model
-data<-aimms4r::GetData(“Populations”)
+##Assuming there is an AIMMS identifier with name “Population” in the model
+data<-aimms4r::GetData(“Population”)
 ```
 
 
@@ -247,12 +248,12 @@ SetData(data, identifierName, modeForUnknownElements=0)
 
 ## data 
 
-An R object containing data that, after the successful call of the function, will be *assigned to the underlying AIMMS identifier*. In case the identifier to which we want to assign the data has multiple dimensions, __the R object needs to be a data frame with columns equal to the amount of assigned identifier’s dimensions plus one,  for the value column__. The column elements should be contained in the corresponding AIMMS sets (to which the identifier indices are bound). The value column elements should have *the same storage type as the identifier’s storage type*. In case the AIMMS identifier is scalar, the R object also needs to be scalar and should have the same storage data type as the identifier.  
+An R object containing data (i.e. 'inputdata' in below example) that, after the successful call of the function, will be *assigned to the underlying AIMMS identifier*. In case the identifier to which we want to assign the data has multiple dimensions, __the R object needs to be a data frame with columns equal to the amount of assigned identifier’s dimensions plus one,  for the value column__. The column elements should be contained in the corresponding AIMMS sets (to which the identifier indices are bound). The value column elements should have *the same storage type as the identifier’s storage type*. In case the AIMMS identifier is scalar, the R object also needs to be scalar and should have the same storage data type as the identifier.  
 
 
 ## identifierName 
 
-The AIMMS identifier in which we want to store the underlying data.
+The AIMMS identifier in which we want to store the underlying data. (i.e. 'Population' in below example)
 
 
 ## modeForUnknownElements
@@ -274,7 +275,7 @@ Set Cities {
     Index: c;
     InitialData: data{'Amsterdam','Haarlem','Utrecht'};
 }
-Parameter PopulationsInK {
+Parameter Population {
     IndexDomain: (c);
     InitialData: 0;
 }
@@ -284,10 +285,10 @@ ElementParameter CurrentCity {
 }
 
 ###Consider the following R code:
-population<-data.frame(c(‘Amsterdam’,’Haarlem’),c(779,150 ))
+inputdata<-data.frame(c(‘Amsterdam’,’Haarlem’),c(779,150 ))
 
 ##Set multidimensional identifier data
-SetData(population,’PopulationsInK’);
+SetData(inputdata,’Population’);
 
 ##Set scalar set element
 SetData(‘Amsterdam’,’CurrentCity’);
@@ -302,27 +303,27 @@ Set DutchCities {
     InitialData: data{'Amsterdam','Haarlem','Utrecht','Alkmaar'};
 }
 
-Parameter Populations {
+Parameter Population {
     IndexDomain: (c);
     InitialData: 0;
 }
 
 ###Consider the following R code:
-population<-data.frame(c(‘Amsterdam’,’Haarlem’,'Leeuwarden','Groningen'),c(779, 150, 108, 584 ))
+inputdata<-data.frame(c(‘Amsterdam’,’Haarlem’,'Leeuwarden','Groningen'),c(779, 150, 108, 584 ))
 
 ##Set multidimensional identifier data
-SetData(population,’Populations’);
+SetData(inputdata,’Population’);
 
 ##AIMMS error
-==> R_tryEval: Error in SetData(population, "Populations"):Couldn't find set element with label Leeuwarden in Set Cities 
+==> R_tryEval: Error in SetData(inputdata, "Population"):Couldn't find set element with label Leeuwarden in Set Cities 
 ##Leeuwarden is not contained in the set DutchCities! 
 ##Let's try the above statement again but by using modeForUnknownElements equal to 1!
 
 
-SetData(population,’Populations’,modeForUnknownElements = 1);
+SetData(inputdata,’Population’,modeForUnknownElements = 1);
 
 ```
-The last statement where __modeForUnknownElements__ has value equal to 1 will succeed; the AIMMS identifier Populations will have values for the tuples 'Amsterdam','Haarlem',__'Leeuwarden'__,'Groningen'
+The last statement where __modeForUnknownElements__ has value equal to 1 will succeed; the AIMMS identifier Population will have values for the tuples 'Amsterdam','Haarlem',__'Leeuwarden'__,'Groningen'
 and the string __'Leeuwarden' will be an element of the set DutchCities__. 
 
 
